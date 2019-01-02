@@ -12,14 +12,14 @@ var minCss = require('gulp-clean-css');
 
 //开发环境
 gulp.task('scss', function() {
-    gulp.src('./src/scss/*.scss')
+    return gulp.src('./src/scss/*.scss')
         .pipe(sass())
         .pipe(minCss())
         .pipe(gulp.dest('./src/css'))
 })
 
 gulp.task('server', function() {
-    gulp.src('src')
+    return gulp.src('src')
         .pipe(server({
             port: 9090,
             livereload: true
@@ -27,7 +27,7 @@ gulp.task('server', function() {
 })
 
 gulp.task('uglify', function() {
-    gulp.src('./js/*.js')
+    return gulp.src('./js/*.js')
         .pipe(concat('all.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./src/js/lib'))
@@ -43,12 +43,12 @@ gulp.task('default', gulp.series('scss', 'uglify', 'server', 'watch'));
 
 //打包环境
 gulp.task('bcss', function() {
-    gulp.src('./src/css/all.css')
+    return gulp.src('./src/css/all.css')
         .pipe('./dist/css')
 })
 
 gulp.task('bjs', function() {
-    gulp.src('./src/js/all.js')
+    return gulp.src('./src/js/all.js')
         .pipe('./dist/js')
 })
 
