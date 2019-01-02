@@ -1,0 +1,1 @@
+var str="abcdefg",html="hello word";function sort(r){return r.sort(function(r,o){return o<r})}console.log(9),alert(9);
