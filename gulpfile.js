@@ -10,6 +10,7 @@ var uglify = require('gulp-uglify');
 
 var minCss = require('gulp-clean-css');
 
+//开发环境
 gulp.task('scss', function() {
     gulp.src('./src/scss/*.scss')
         .pipe(sass())
@@ -38,3 +39,18 @@ gulp.task('watch', function() {
 })
 
 gulp.task('default', gulp.series('scss', 'uglify', 'server', 'watch'));
+
+
+//打包环境
+gulp.task('bcss', function() {
+    gulp.src('./src/css/all.css')
+        .pipe('./dist/css')
+})
+
+gulp.task('bjs', function() {
+    gulp.src('./src/js/all.js')
+        .pipe('./dist/js')
+})
+
+
+gulp.task('build', gulp.parallel('bcss', 'bjs'))
